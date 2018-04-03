@@ -2,6 +2,7 @@ package by.korneenko.reservation.controllers.rest;
 
 import by.korneenko.reservation.beans.EmployeeEntity;
 import by.korneenko.reservation.services.EmployeeService;
+import by.korneenko.reservation.services.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,8 +14,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping( value = "/employee", produces = MediaType.APPLICATION_JSON_VALUE )
 public class EmployeeController {
 
-    @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     /*---Add new User---*/
     @PostMapping("/add")

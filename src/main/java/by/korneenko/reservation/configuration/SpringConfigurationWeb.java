@@ -24,7 +24,7 @@ import java.util.Properties;
 
 @SpringBootApplication
 @PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = { "by.korneenko.reservation" })
+@ComponentScan({ "by.korneenko.reservation" })
 @EnableTransactionManagement
 public class SpringConfigurationWeb {
 
