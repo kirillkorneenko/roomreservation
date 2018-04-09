@@ -12,7 +12,7 @@ public class EmployeeEntity {
     private String patronymic;
     private String login;
     private String password;
-    private int idRole;
+    private Long idRole;
 
     @Id
     @Column(name = "id")
@@ -76,11 +76,11 @@ public class EmployeeEntity {
 
     @Basic
     @Column(name = "idRole")
-    public int getIdRole() {
+    public Long getIdRole() {
         return idRole;
     }
 
-    public void setIdRole(int idRole) {
+    public void setIdRole(Long idRole) {
         this.idRole = idRole;
     }
 

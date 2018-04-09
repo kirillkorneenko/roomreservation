@@ -10,7 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping( value = "/room", produces = MediaType.APPLICATION_JSON_VALUE )
+@RequestMapping( value = "/api", produces = MediaType.APPLICATION_JSON_VALUE )
 public class RoomController {
 
     RoomService roomService;
@@ -21,8 +21,7 @@ public class RoomController {
     }
 
     /*---Add new Room---*/
-    @PostMapping("/add")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/room/add")
     public ResponseEntity<String> save(@RequestBody RoomEntity roomEntity) {
         roomService.save(roomEntity);
         //ID!!!!!
@@ -30,8 +29,7 @@ public class RoomController {
     }
 
     /*---Get a Room by id---*/
-    @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @GetMapping("/room/{id}")
     public ResponseEntity<?> get(@PathVariable("id") long id)  {
         RoomEntity room = roomService.getByKey(id);
         if(room == null) {
@@ -41,8 +39,7 @@ public class RoomController {
     }
 
     /*---Update a room by id---*/
-    @PutMapping("/update/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/room/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody RoomEntity room) {
         room.setId(id);
         roomService.update(room);
@@ -50,8 +47,7 @@ public class RoomController {
     }
 
     /*---Delete a room by id---*/
-    @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/room/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") long id) {
         RoomEntity room = new RoomEntity();
         room.setId(id);

@@ -75,7 +75,6 @@ public class SpringConfigurationWeb {
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
-
         return transactionManager;
     }
 
@@ -97,6 +96,13 @@ public class SpringConfigurationWeb {
         return properties;
     }
 
+//    @Bean
+//    public InternalResourceViewResolver viewResolver() {
+//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//        resolver.setPrefix("/WEB-INF/view/");
+//        resolver.setSuffix(".jsp");
+//        return resolver;
+//    }
 
 
     public static void main(String[] args) {

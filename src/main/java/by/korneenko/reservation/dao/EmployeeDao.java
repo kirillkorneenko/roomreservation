@@ -7,4 +7,5 @@ public interface EmployeeDao {
     EmployeeEntity getByKey(Long id);
     void update(EmployeeEntity employeeEntity);
     void delete(EmployeeEntity employee);
+    EmployeeEntity findByField(String field, String value) ;
 }

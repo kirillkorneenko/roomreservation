@@ -2,12 +2,12 @@ package by.korneenko.reservation.services;
 
 import by.korneenko.reservation.beans.EmployeeEntity;
 import by.korneenko.reservation.dao.EmployeeDao;
-import org.hibernate.annotations.LazyToOne;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.PersistenceContext;
 
 @Service
 @Transactional
@@ -31,4 +31,19 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Transactional
     public void delete(EmployeeEntity employee){dao.delete(employee);}
+
+    @Override
+    public boolean isUserExist(EmployeeEntity employeeEntity) { return loadUserByUsername(employeeEntity.getName()) != null; }
+
+    @Override
+    public EmployeeEntity loadUserByUsername(String username) throws UsernameNotFoundException {
+        EmployeeEntity employeeEntity = null;
+            employeeEntity = dao.findByField("username", username);
+
+        if (employeeEntity == null) {
+            throw new UsernameNotFoundException(String.format("Пользователь под именем '%s'.", username));
+        } else {
+            return employeeEntity;
+        }
+    }
 }

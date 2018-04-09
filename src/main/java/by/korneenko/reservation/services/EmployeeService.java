@@ -8,4 +8,6 @@ public interface EmployeeService {
     EmployeeEntity getByKey(Long id);
     void  update(EmployeeEntity employeeEntity);
     void delete(EmployeeEntity employeeEntity);
+    boolean isUserExist(EmployeeEntity employeeEntity);
+    EmployeeEntity loadUserByUsername(String name);
 }

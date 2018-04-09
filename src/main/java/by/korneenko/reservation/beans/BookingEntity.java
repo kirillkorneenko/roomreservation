@@ -9,11 +9,11 @@ import java.util.Objects;
 @Table(name = "booking", schema = "roomreservation", catalog = "")
 public class BookingEntity {
     private Long id;
-    private int idEmployee;
-    private int idRoom;
+    private Long idEmployee;
+    private Long idRoom;
     private Date date;
     private Time timeStart;
-    private Time timeEnf;
+    private Time timeEnd;
 
     @Id
     @Column(name = "id")
@@ -27,21 +27,21 @@ public class BookingEntity {
 
     @Basic
     @Column(name = "idEmployee")
-    public int getIdEmployee() {
+    public Long getIdEmployee() {
         return idEmployee;
     }
 
-    public void setIdEmployee(int idEmployee) {
+    public void setIdEmployee(Long idEmployee) {
         this.idEmployee = idEmployee;
     }
 
     @Basic
     @Column(name = "idRoom")
-    public int getIdRoom() {
+    public Long getIdRoom() {
         return idRoom;
     }
 
-    public void setIdRoom(int idRoom) {
+    public void setIdRoom(Long idRoom) {
         this.idRoom = idRoom;
     }
 
@@ -66,13 +66,13 @@ public class BookingEntity {
     }
 
     @Basic
-    @Column(name = "timeEnf")
-    public Time getTimeEnf() {
-        return timeEnf;
+    @Column(name = "timeEnd")
+    public Time getTimeEnd() {
+        return timeEnd;
     }
 
-    public void setTimeEnf(Time timeEnf) {
-        this.timeEnf = timeEnf;
+    public void setTimeEnd(Time timeEnd) {
+        this.timeEnd = timeEnd;
     }
 
     @Override
@@ -85,12 +85,12 @@ public class BookingEntity {
                 idRoom == that.idRoom &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(timeStart, that.timeStart) &&
-                Objects.equals(timeEnf, that.timeEnf);
+                Objects.equals(timeEnd, that.timeEnd);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, idEmployee, idRoom, date, timeStart, timeEnf);
+        return Objects.hash(id, idEmployee, idRoom, date, timeStart, timeEnd);
     }
 }
