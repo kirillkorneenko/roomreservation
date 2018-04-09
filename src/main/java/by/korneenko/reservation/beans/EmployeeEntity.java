@@ -12,7 +12,6 @@ public class EmployeeEntity {
     private String patronymic;
     private String login;
     private String password;
-    private Long idRole;
 
     @Id
     @Column(name = "id")
@@ -74,23 +73,12 @@ public class EmployeeEntity {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "idRole")
-    public Long getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(Long idRole) {
-        this.idRole = idRole;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EmployeeEntity that = (EmployeeEntity) o;
         return id == that.id &&
-                idRole == that.idRole &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(patronymic, that.patronymic) &&
@@ -101,6 +89,6 @@ public class EmployeeEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, surname, patronymic, login, password, idRole);
+        return Objects.hash(id, name, surname, patronymic, login, password);
     }
 }

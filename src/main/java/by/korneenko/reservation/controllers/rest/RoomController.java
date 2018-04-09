@@ -9,11 +9,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 @RestController
 @RequestMapping( value = "/api", produces = MediaType.APPLICATION_JSON_VALUE )
 public class RoomController {
 
     RoomService roomService;
+
+    public RoomController(){
+    }
 
     @Autowired
     public void setRoomService(RoomService roomService) {
@@ -28,9 +36,11 @@ public class RoomController {
         return ResponseEntity.ok().body("Добавлена новая комната" );
     }
 
+
+
     /*---Get a Room by id---*/
     @GetMapping("/room/{id}")
-    public ResponseEntity<?> get(@PathVariable("id") long id)  {
+    public ResponseEntity<?> get(@PathVariable("id") long id) {
         RoomEntity room = roomService.getByKey(id);
         if(room == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Команта не найдена");

@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
 import java.util.List;
 
 @RestController
@@ -28,8 +27,8 @@ public class BookingController {
     @PostMapping("/booking/add")
     public ResponseEntity<String> save(@RequestBody BookingEntity bookingEntity) {
         if(bookingService.save(bookingEntity)){
-
-        return ResponseEntity.ok().body("Добавлена новая бронь");}
+        return ResponseEntity.ok().body("Добавлена новая бронь");
+        }
         else return ResponseEntity.status(HttpStatus.CONFLICT).body("Бронь не может быть добавлена");
     }
 
@@ -47,7 +46,7 @@ public class BookingController {
     @PutMapping("/bookingByTime")
     public ResponseEntity<?> bookingByTime(@RequestBody BookingByTime modelRequest)  {
         List<BookingEntity> list = bookingService.getBookingByTime(modelRequest);
-        if(list == null) {
+        if(list.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Брони не найдены");
         }
         return ResponseEntity.ok().body(list);
@@ -72,7 +71,7 @@ public class BookingController {
     @GetMapping("/booking/bookingByEmployee/{id}")
     public ResponseEntity<?> getBookingByEmployee(@PathVariable("id") long id){
         List<BookingEntity> list = bookingService.getBookingByUser(id);
-        if(list==null){
+        if(list.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Брони не найдены");
         }
         return ResponseEntity.ok().body(list);

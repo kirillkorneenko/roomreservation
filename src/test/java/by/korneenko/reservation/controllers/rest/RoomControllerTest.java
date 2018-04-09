@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -43,7 +44,7 @@ public class RoomControllerTest {
     }
 
     @Test
-    public void getById() throws Exception {
+    public void getByIdTest() throws Exception {
         RoomEntity room = new RoomEntity();
         room.setId( 1L);
         room.setNumber("1");
@@ -51,13 +52,23 @@ public class RoomControllerTest {
 
         mockMvc.perform(
                 get("/api/room/1")
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .content(new ObjectMapper().writeValueAsString(room)))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk()).andDo(print());
 
         verify(roomService, times(1)).getByKey(1L);
         verifyNoMoreInteractions(roomService);
     }
 
+    @Test
+    public void deleteTest() throws Exception {
+        RoomEntity roomEntity = new RoomEntity();
+        roomEntity.setId(4L);
+        mockMvc.perform(
+                delete("/api/room/delete/4")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk()).andDo(print());
 
+        verify(roomService, times(1)).delete(roomEntity);
+        verifyNoMoreInteractions(roomService);
+    }
 }

@@ -111,5 +111,16 @@
     <orderEntry type="library" name="Maven: org.attoparser:attoparser:2.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.integration:spring-integration-test:5.0.4.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.integration:spring-integration-core:5.0.3.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-messaging:5.0.4.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.retry:spring-retry:1.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.1.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.micrometer:micrometer-core:1.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hdrhistogram:HdrHistogram:2.1.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.latencyutils:LatencyUtils:2.0.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.integration:spring-integration-test-support:5.0.3.RELEASE" level="project" />
   </component>
 </module>
